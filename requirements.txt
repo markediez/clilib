@@ -1,4 +1,22 @@
-flake8
-pytest
-pytest-flake8
-tox
+## The following requirements were added by pip freeze:
+appdirs==1.4.3
+attrs==19.3.0
+distlib==0.3.0
+entrypoints==0.3
+filelock==3.0.12
+flake8==3.7.9
+mccabe==0.6.1
+more-itertools==8.2.0
+packaging==20.3
+pluggy==0.13.1
+py==1.8.1
+pycodestyle==2.5.0
+pyflakes==2.1.1
+pyparsing==2.4.7
+pytest==5.4.2
+pytest-flake8==1.0.5
+six==1.14.0
+toml==0.10.0
+tox==3.15.0
+virtualenv==20.0.20
+wcwidth==0.1.9

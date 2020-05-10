@@ -1,2 +1,6 @@
 # env
 .vscode/*
+
+# artifacts
+**/*egg-info/**
+**/__pycache__/*

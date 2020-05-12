@@ -1,4 +1,4 @@
-import clilib.munge
+import clilib.util
 
 def test_to_kebab():
     mock = {
@@ -13,4 +13,4 @@ def test_to_kebab():
     }
 
     for userInput, expectedOutput in mock.items():
-        assert(clilib.munge.to_kebab(userInput) == expectedOutput)
+        assert(clilib.util.to_kebab(userInput) == expectedOutput)

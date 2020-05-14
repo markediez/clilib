@@ -19,3 +19,5 @@ def run(prog):
 
     _root_parser.prog = prog
     _args = _root_parser.parse_args()
+
+    _args.func(_args)

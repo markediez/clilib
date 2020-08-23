@@ -1,7 +1,9 @@
 def resource(klass):
     def wrapper():
-        print("Class wrap")
-        print(klass)
-        print("End class wrap")
-    
-    return wrapper
+        setattr(klass, '__parser', None)
+        setattr(klass, '__name', '')
+        setattr(klass, '__verbs', [])
+
+        return klass
+
+    return wrapper()

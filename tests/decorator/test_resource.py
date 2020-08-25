@@ -7,6 +7,5 @@ class TestDecoratorResource():
             someattr = 'attr'
 
         assert MyResource.someattr == 'attr'
-        assert hasattr(MyResource, '__parser')
-        assert hasattr(MyResource, '__verbs')
+        assert hasattr(MyResource, '__parsers')
         assert hasattr(MyResource, '__name')

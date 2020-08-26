@@ -1,0 +1,2 @@
+def arg():
+    print("arg")

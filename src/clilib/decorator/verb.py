@@ -1,10 +1,13 @@
-import clilib
+def is_verb(func):
+    return hasattr(func, '__action')
 
-def verb(func):
+
+def verb(*args, **kwargs):
+    func = args[0]
     def wrapper(*args, **kwargs):
-        resource = args[0]
-        clilib.register_verb(resource, func)
-
         return func(*args, **kwargs)
+
+    action = func.__name__
+    setattr(wrapper, '__action', action)
 
     return wrapper

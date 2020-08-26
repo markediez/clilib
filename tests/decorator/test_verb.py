@@ -1,4 +1,5 @@
-from clilib.decorator import resource, verb
+from clilib.decorator.resource import resource
+from clilib.decorator.verb import verb
 
 class TestDecoratorVerb():
     def test_decorated_function_registers_as_a_verb(self):
@@ -8,9 +9,6 @@ class TestDecoratorVerb():
             def get(self):
                 print("Got something")
 
-        # Need to run the function for decorators to compile
-        # TODO: Figure out a way to not do this... check Flask code?
-        MyResource().get()
         assert 'get' in getattr(MyResource, '__parsers')
 
 

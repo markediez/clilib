@@ -1,7 +1,4 @@
-import clilib.decorator
-import clilib.base
 import clilib.util
-
 import argparse
 import logging
 
@@ -9,7 +6,6 @@ import logging
 _root_parser = argparse.ArgumentParser()
 _subparsers = _root_parser.add_subparsers()
 _args = None
-_log_level = logging.INFO
 
 logger = clilib.util.get_logger(f"[{__name__}]")
 

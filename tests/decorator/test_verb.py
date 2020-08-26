@@ -1,5 +1,5 @@
-from clilib.decorator.resource import resource
-from clilib.decorator.verb import verb
+import clilib.decorator.resource as resource
+import clilib.decorator.verb as verb
 
 class TestDecoratorVerb():
     def test_decorated_function_registers_as_a_verb(self):

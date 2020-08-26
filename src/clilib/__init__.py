@@ -9,7 +9,7 @@ import logging
 _root_parser = argparse.ArgumentParser()
 _subparsers = _root_parser.add_subparsers()
 _args = None
-_log_level = logging.DEBUG
+_log_level = logging.INFO
 
 logger = clilib.util.get_logger(f"[{__name__}]")
 
@@ -42,11 +42,13 @@ def register_verb(resource, func):
         resource_parser.set_defaults(func = func)
 
 
-def run(prog):
+def run(prog, log_level=logging.INFO):
     global _root_parser
     global _args
     global _subparsers
+    global _log_level
 
+    _log_level = log_level
     _root_parser.prog = prog
     _args = _root_parser.parse_args()
 

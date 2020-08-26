@@ -63,3 +63,19 @@ Hello World
 - flake8
 - pytest
 - pylogrus
+
+# TODO
+- How to make log level configurable?
+Since decorators run during "compile"(?) time, setting the level through `clilib.run("foo", logging.DEBUG)` will set the level after the decorators do their thing.
+Same story with `clilib._log_level = logging.DEBUG`
+
+- Fix imports so that we can have the dream of
+```python
+import clilib
+
+@clilib.decorator.resource
+class MyResource:
+    @clilib.decorator.verb
+    def get(self):
+        print("Hello World")
+```

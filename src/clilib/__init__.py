@@ -42,13 +42,11 @@ def register_verb(resource, func):
         resource_parser.set_defaults(func = func)
 
 
-def run(prog, log_level=logging.INFO):
+def run(prog):
     global _root_parser
     global _args
     global _subparsers
-    global _log_level
 
-    _log_level = log_level
     _root_parser.prog = prog
     _args = _root_parser.parse_args()
 

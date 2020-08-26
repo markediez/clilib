@@ -62,4 +62,4 @@ Hello World
 # Testing
 - flake8
 - pytest
-- tox
+- pylogrus

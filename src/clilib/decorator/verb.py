@@ -2,9 +2,6 @@ import clilib.util
 
 logger = clilib.util.get_logger(f"[{__name__}]")
 
-def is_verb(func):
-    return hasattr(func, '__action')
-
 
 def verb(*args, **kwargs):
     logger.debug('Decorating verb')

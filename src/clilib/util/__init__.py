@@ -1,6 +1,7 @@
 import re
 import logging
 
+import argparse
 from pylogrus import PyLogrus, TextFormatter
 
 _log_level = logging.INFO
@@ -25,3 +26,13 @@ def get_logger(name=__name__):
     logger.addHandler(ch)
 
     return logger.withPrefix(name)
+
+
+def get_subparser(parser):
+    # Couldn't find a function in argparse to do this
+    # It's already stored in the parser object. Doesn't make sense to have another mapping for it
+    for action in parser.__dict__['_actions']:
+        if (type(action) is argparse._SubParsersAction):
+            return action
+
+    return parser.add_subparsers()

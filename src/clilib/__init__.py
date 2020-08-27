@@ -30,13 +30,18 @@ def register_verb(resource, func):
         _subparsers.add_parser(verb)
 
     if verb not in resource.__parsers:
-        logger.debug(f"Adding verb, '{verb}', in resource._parsers")
-        resource.__parsers[verb] = _subparsers.choices[verb].add_subparsers()
+        logger.debug(f"Adding verb, '{verb}', in resource.__parsers")
+        if verb in _subparsers.choices:
+            logger.debug(f"Referencing subparser of _subparsers.choices['{verb}']")
+            resource.__parsers[verb] = clilib.util.get_subparser(_subparsers.choices[verb])
+        else:
+            logger.debug(f"Creating _subparsers.choices['{verb}']")
+            resource.__parsers[verb] = _subparsers.choices[verb].add_subparsers()
 
     if resource_name not in resource.__parsers[verb].choices:
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
         resource_parser = resource.__parsers[verb].add_parser(resource_name)
-        resource_parser.set_defaults(func = func)
+        resource_parser.set_defaults(__func = func)
 
 
 def run(prog):
@@ -47,5 +52,5 @@ def run(prog):
     _root_parser.prog = prog
     _args = _root_parser.parse_args()
 
-    if hasattr(_args, "func"):
-        _args.func(_args)
+    if hasattr(_args, "__func"):
+        _args.__func(_args)

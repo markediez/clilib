@@ -41,7 +41,7 @@ def register_verb(resource, func):
     if resource_name not in resource.__parsers[verb].choices:
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
         resource_parser = resource.__parsers[verb].add_parser(resource_name)
-        resource_parser.set_defaults(_func = func)
+        resource_parser.set_defaults(_func=func)
 
 
 def run(prog):

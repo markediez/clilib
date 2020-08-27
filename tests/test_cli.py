@@ -1,5 +1,5 @@
 import clilib
-import argparse
+
 
 @clilib.decorator.resource
 class MyResource():
@@ -40,7 +40,6 @@ class TestCli:
             "foo-resource"
         ])
         assert(args._func == FooResource.list)
-
 
     def test_same_verb_for_multiple_resource(self):
         args = clilib._root_parser.parse_args([

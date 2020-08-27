@@ -1,5 +1,6 @@
 import clilib.decorator.resource as resource
 
+
 class TestDecoratorResource():
     def test_decorated_class_gets_base_attrs(self):
         @resource

@@ -10,6 +10,7 @@ def verb(*args, **kwargs):
 
     func = args[0]
     logger.debug(f"func  : {func}")
+
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
 

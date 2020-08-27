@@ -4,6 +4,7 @@ import clilib.decorator.util
 
 logger = clilib.util.get_logger(f"[{__name__}]")
 
+
 def resource(klass):
     logger.debug(f"class: {klass}")
 
@@ -17,6 +18,5 @@ def resource(klass):
         if callable(value) and clilib.decorator.util.is_verb(value):
             logger.debug(f"{key} is decorated!")
             clilib.register_verb(klass, value)
-
 
     return klass

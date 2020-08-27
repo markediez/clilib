@@ -1,5 +1,6 @@
 import clilib.util
 
+
 def test_to_kebab():
     mock = {
         "alllower": "alllower",

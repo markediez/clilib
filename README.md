@@ -10,8 +10,9 @@ my-cmd [my-namespace] my-action my-resource [pos_args] [--options]
 ```python
 import clilib
 
-@clilib.Resource
+@clilib.decorator.resource
 class MyResource():
+    @clilib.decorator.get
     def get(self):
         print "Hello world"
 
@@ -40,8 +41,9 @@ $ touch namespace/__init__.py namespace/my-namespace/__init__.py
 # namespace/my-namespace/__init__.py
 import clilib
 
-@clilib.Resource
+@clilib.decorator.resource
 class MyResource():
+    @clilib.decorator.verb
     def get(self):
         print("Hello World")
 ```
@@ -50,8 +52,6 @@ class MyResource():
 $ python example.py my-namespace get my-resource
 Hello World
 ```
-
-# Decorators
 
 # Notes
 - You can either have `cli namespace action resource` **OR** `cli action resource`

@@ -35,4 +35,7 @@ def get_subparser(parser):
         if (type(action) is argparse._SubParsersAction):
             return action
 
-    return parser.add_subparsers()
+    subparser = parser.add_subparsers(dest='_cmd')
+    subparser.required = True
+
+    return subparser

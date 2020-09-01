@@ -5,7 +5,8 @@ import logging
 
 
 _root_parser = argparse.ArgumentParser()
-_subparsers = _root_parser.add_subparsers()
+_subparsers = _root_parser.add_subparsers(dest='_cmd')
+_subparsers.required = True
 _args = None
 
 logger = clilib.util.get_logger(f"[{__name__}]")
@@ -42,6 +43,12 @@ def register_verb(resource, func):
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
         resource_parser = resource.__parsers[verb].add_parser(resource_name)
         resource_parser.set_defaults(_func=func)
+
+
+def init(prog):
+    global _root_parser
+
+    _root_parser.prog = prog
 
 
 def run(prog):

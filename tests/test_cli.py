@@ -24,7 +24,7 @@ class FooResource():
 
 class TestCli:
     def test_parser_prog_name_is_value_passed(self):
-        clilib.run("clilib")
+        clilib.init("clilib")
         assert clilib._root_parser.prog == "clilib"
 
     def test_parsed_args_has_default_func_attribute_to_run(self):

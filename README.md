@@ -30,7 +30,8 @@ Hello world
 ```python
 import clilib
 
-clilib.run("mycli")
+clilib.init("mycli")
+clilib.run()
 ```
 3. Namespaces are sub-packages of an expected local `namespace` package
 ```

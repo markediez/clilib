@@ -11,12 +11,9 @@ def verb(*args, **kwargs):
     func = args[0]
     logger.debug(f"func  : {func}")
 
-    def wrapper(*args, **kwargs):
-        return func(*args, **kwargs)
-
     action = func.__name__
     logger.debug(f"action: {action}")
     logger.debug(f"Adding attribute '__action={action}' to decorated method")
-    setattr(wrapper, '__action', action)
+    setattr(func, '__action', action)
 
-    return wrapper
+    return func

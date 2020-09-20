@@ -31,7 +31,7 @@ Hello world
 import clilib
 
 clilib.init("mycli")
-clilib.run()
+clilib.run("mycli")
 ```
 3. Namespaces are sub-packages of an expected local `namespace` package
 ```
@@ -55,10 +55,13 @@ Hello World
 ```
 
 # Notes
-- You can either have `cli namespace action resource` **OR** `cli action resource`
+- You can either have `cli namespace action resource` **OR** `cli action resource` in the future
 
 # Roadmap
 - [ ] Global Config -- [Potential](https://docs.python.org/3.2/library/argparse.html#the-namespace-object)
+- [ ] Namespace
+- [ ] Conditional Args
+- [ ] CLI without resource ex. `git init`
 
 # Testing
 - flake8

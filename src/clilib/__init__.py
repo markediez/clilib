@@ -18,13 +18,16 @@ def build_parser(parser):
 
 def register_verb(resource, func):
     logger.debug('Registering resource verb')
+    logger.debug(_subparsers.choices)
 
     resource_name = clilib.util.to_kebab(resource.__name__)
     verb = getattr(func, '__action')
+    args = getattr(func, '_args', []) + getattr(resource, '_args', [])
 
     logger.debug(f"resource: {resource}")
     logger.debug(f"func    : {func}")
     logger.debug(f"verb    : {verb}")
+    logger.debug(f"args    : {args}")
 
     if verb not in _subparsers.choices:
         logger.debug(f"Adding verb, '{verb}', in _subparsers")
@@ -39,10 +42,17 @@ def register_verb(resource, func):
             logger.debug(f"Creating _subparsers.choices['{verb}']")
             resource.__parsers[verb] = _subparsers.choices[verb].add_subparsers()
 
+    logger.debug(resource.__parsers[verb].choices)
     if resource_name not in resource.__parsers[verb].choices:
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
         resource_parser = resource.__parsers[verb].add_parser(resource_name)
-        resource_parser.set_defaults(_func=func)
+        resource_parser.set_defaults(_func=func, _klass=resource)
+
+        for arg in args:
+            rargs, rkwargs = arg
+
+            logger.debug(f"Adding arg to '{verb} {resource_name}': {rargs}, {rkwargs}")
+            resource_parser.add_argument(*rargs, **rkwargs)
 
 
 def init(prog):
@@ -60,4 +70,4 @@ def run(prog):
     _args = _root_parser.parse_args()
 
     if hasattr(_args, "_func"):
-        _args._func(_args)
+        _args._func(_args._klass, args=_args)

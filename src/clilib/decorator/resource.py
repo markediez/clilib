@@ -19,4 +19,7 @@ def resource(klass):
             logger.debug(f"{key} is decorated!")
             clilib.register_verb(klass, value)
 
+            if hasattr(value, '_args'):
+                logger.debug('Adding args')
+
     return klass

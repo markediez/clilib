@@ -10,7 +10,7 @@ class TestDecoratorVerb():
             def get(self):
                 print('Got something')
 
-        assert 'get' in getattr(MyResource, '__parsers')
+        assert 'get' in getattr(MyResource, '_parsers')
 
     def test_specify_verb_through_decorator(self):
         pass

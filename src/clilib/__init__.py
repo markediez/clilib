@@ -21,7 +21,7 @@ def register_verb(resource, func):
     logger.debug(_subparsers.choices)
 
     resource_name = clilib.util.to_kebab(resource.__name__)
-    verb = getattr(func, '__action')
+    verb = getattr(func, '_action')
     args = getattr(func, '_args', []) + getattr(resource, '_args', [])
 
     logger.debug(f"resource: {resource}")
@@ -33,19 +33,19 @@ def register_verb(resource, func):
         logger.debug(f"Adding verb, '{verb}', in _subparsers")
         _subparsers.add_parser(verb)
 
-    if verb not in resource.__parsers:
-        logger.debug(f"Adding verb, '{verb}', in resource.__parsers")
+    if verb not in resource._parsers:
+        logger.debug(f"Adding verb, '{verb}', in resource._parsers")
         if verb in _subparsers.choices:
             logger.debug(f"Referencing subparser of _subparsers.choices['{verb}']")
-            resource.__parsers[verb] = clilib.util.get_subparser(_subparsers.choices[verb])
+            resource._parsers[verb] = clilib.util.get_subparser(_subparsers.choices[verb])
         else:
             logger.debug(f"Creating _subparsers.choices['{verb}']")
-            resource.__parsers[verb] = _subparsers.choices[verb].add_subparsers()
+            resource._parsers[verb] = _subparsers.choices[verb].add_subparsers()
 
-    logger.debug(resource.__parsers[verb].choices)
-    if resource_name not in resource.__parsers[verb].choices:
+    logger.debug(resource._parsers[verb].choices)
+    if resource_name not in resource._parsers[verb].choices:
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
-        resource_parser = resource.__parsers[verb].add_parser(resource_name)
+        resource_parser = resource._parsers[verb].add_parser(resource_name)
         resource_parser.set_defaults(_func=func, _klass=resource)
 
         for arg in args:

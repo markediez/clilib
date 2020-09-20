@@ -8,9 +8,9 @@ logger = clilib.util.get_logger(f"[{__name__}]")
 def resource(klass):
     logger.debug(f"class: {klass}")
 
-    logger.debug("Adding attributes '__parsers' and '__name'")
-    setattr(klass, '__parsers', {})
-    setattr(klass, '__name', '')
+    logger.debug("Adding attributes '_parsers' and '_name'")
+    setattr(klass, '_parsers', {})
+    setattr(klass, '_name', '')
 
     logger.debug(f"Finding verb decorated functions in {klass}")
     for key, value in klass.__dict__.items():

@@ -13,7 +13,7 @@ def verb(*args, **kwargs):
 
     action = func.__name__
     logger.debug(f"action: {action}")
-    logger.debug(f"Adding attribute '__action={action}' to decorated method")
-    setattr(func, '__action', action)
+    logger.debug(f"Adding attribute '_action={action}' to decorated method")
+    setattr(func, '_action', action)
 
     return func

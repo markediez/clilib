@@ -4,7 +4,7 @@ import logging
 import argparse
 from pylogrus import PyLogrus, TextFormatter
 
-_log_level = logging.DEBUG
+_log_level = logging.INFO
 
 
 # https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case

@@ -34,6 +34,13 @@ class TestCli:
         ])
         assert hasattr(args, '_func')
 
+    def test_parsed_args_has_default_klass_attribute_to_pass(self):
+        args = clilib._root_parser.parse_args([
+            "list",
+            "foo-resource"
+        ])
+        assert hasattr(args, '_klass')
+
     def test_list_foo_resource(self):
         args = clilib._root_parser.parse_args([
             "list",

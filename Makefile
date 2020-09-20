@@ -13,3 +13,8 @@ test-run:
 .PHONY: build
 build:
 	docker build . -t clilib:$(TAG)
+
+.PHONY: dev
+dev:
+	docker-compose up
+	docker-compose exec clilib bash

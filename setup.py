@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="clilib",
-    version="0.0.1",
+    version="0.2.0",
     author="Mark Diez",
     author_email="markediez@gmail.com",
     description="Build CLI Tools with ease",
@@ -20,4 +20,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=[
+        'pylogrus'
+    ]
 )

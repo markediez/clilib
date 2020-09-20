@@ -22,7 +22,7 @@ def register_verb(resource, func):
 
     resource_name = clilib.util.to_kebab(resource.__name__)
     verb = getattr(func, '__action')
-    args = getattr(func, '_args', [])
+    args = getattr(func, '_args', []) + getattr(resource, '_args', [])
 
     logger.debug(f"resource: {resource}")
     logger.debug(f"func    : {func}")
@@ -46,7 +46,7 @@ def register_verb(resource, func):
     if resource_name not in resource.__parsers[verb].choices:
         logger.debug(f"Adding resource, {resource}, target for verb, {verb}, as {resource_name}")
         resource_parser = resource.__parsers[verb].add_parser(resource_name)
-        resource_parser.set_defaults(_func=func)
+        resource_parser.set_defaults(_func=func, _klass=resource)
 
         for arg in args:
             rargs, rkwargs = arg
@@ -70,4 +70,4 @@ def run(prog):
     _args = _root_parser.parse_args()
 
     if hasattr(_args, "_func"):
-        _args._func(_args)
+        _args._func(_args._klass, args=_args)

@@ -8,7 +8,7 @@ class TestDecoratorVerb():
         class MyResource():
             @verb
             def get(self):
-                print("Got something")
+                print('Got something')
 
         assert 'get' in getattr(MyResource, '__parsers')
 

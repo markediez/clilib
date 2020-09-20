@@ -5,21 +5,21 @@ import clilib
 class MyResource():
     @clilib.decorator.verb
     def get(self):
-        print("get MyResource")
+        print('get MyResource')
 
 
 @clilib.decorator.resource
 class OtherResource():
     @clilib.decorator.verb
     def get(self):
-        print("get OtherResource")
+        print('get OtherResource')
 
 
 @clilib.decorator.resource
 class FooResource():
     @clilib.decorator.verb
     def list(self):
-        print("list FooResource")
+        print('list FooResource')
 
 
 @clilib.decorator.resource
@@ -38,48 +38,48 @@ class ArgResource():
 
 class TestCli:
     def test_parser_prog_name_is_value_passed(self):
-        clilib.init("clilib")
-        assert clilib._root_parser.prog == "clilib"
+        clilib.init('clilib')
+        assert clilib._root_parser.prog == 'clilib'
 
     def test_parsed_args_has_default_func_attribute_to_run(self):
         args = clilib._root_parser.parse_args([
-            "list",
-            "foo-resource"
+            'list',
+            'foo-resource'
         ])
         assert hasattr(args, '_func')
 
     def test_parsed_args_has_default_klass_attribute_to_pass(self):
         args = clilib._root_parser.parse_args([
-            "list",
-            "foo-resource"
+            'list',
+            'foo-resource'
         ])
         assert hasattr(args, '_klass')
 
     def test_list_foo_resource(self):
         args = clilib._root_parser.parse_args([
-            "list",
-            "foo-resource"
+            'list',
+            'foo-resource'
         ])
         assert(args._func == FooResource.list)
 
     def test_same_verb_for_multiple_resource(self):
         args = clilib._root_parser.parse_args([
-            "get",
-            "my-resource"
+            'get',
+            'my-resource'
         ])
         assert(args._func == MyResource.get)
 
         args = clilib._root_parser.parse_args([
-            "get",
-            "other-resource"
+            'get',
+            'other-resource'
         ])
         assert(args._func == OtherResource.get)
 
     def test_positional_arg_exists(self):
         args = clilib._root_parser.parse_args([
-            "get",
-            "arg-resource",
-            "pug"
+            'get',
+            'arg-resource',
+            'pug'
         ])
 
         assert hasattr(args, 'pos_arg')
@@ -87,18 +87,18 @@ class TestCli:
 
     def test_decorator_as_class_adds_arg_to_all(self):
         args = clilib._root_parser.parse_args([
-            "get",
-            "arg-resource",
-            "pug",
-            "--environment",
-            "dev"
+            'get',
+            'arg-resource',
+            'pug',
+            '--environment',
+            'dev'
         ])
 
         args2 = clilib._root_parser.parse_args([
-            "list",
-            "arg-resource",
-            "--environment",
-            "uat"
+            'list',
+            'arg-resource',
+            '--environment',
+            'uat'
         ])
 
         assert hasattr(args, 'environment')
@@ -108,14 +108,14 @@ class TestCli:
 
     def test_multiple_args(self):
         args = clilib._root_parser.parse_args([
-            "list",
-            "arg-resource",
-            "--environment",
-            "uat",
-            "--dry-run"
+            'list',
+            'arg-resource',
+            '--environment',
+            'uat',
+            '--dry-run'
         ])
 
-        assert hasattr(args, "environment")
-        assert hasattr(args, "dry_run")
+        assert hasattr(args, 'environment')
+        assert hasattr(args, 'dry_run')
         assert args.environment == 'uat'
         assert args.dry_run

@@ -69,5 +69,5 @@ def run(prog):
     _root_parser.prog = prog
     _args = _root_parser.parse_args()
 
-    if hasattr(_args, "_func"):
+    if hasattr(_args, '_func'):
         _args._func(_args._klass, args=_args)

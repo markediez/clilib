@@ -1,2 +1,2 @@
 def is_verb(func):
-    return hasattr(func, '__action')
+    return hasattr(func, '_action')

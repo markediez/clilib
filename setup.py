@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="clilib-tatsukenji",
+    name="pyclilib-tatsukenji",
     version="0.2.0",
     author="Mark Diez",
     author_email="markediez@gmail.com",

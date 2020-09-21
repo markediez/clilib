@@ -1,11 +1,11 @@
-# clilib
+# pyclilib
 Python Library to create CLI tools using Subject-Verb-Object pattern
 ```
 my-cmd [my-namespace] my-action my-resource [pos_args] [--options]
 ```
 
 # Quickstart 1: CLI without Namespaces
-1. `pip install clilib`
+1. `pip install pyclilib`
 2. Create a hello world CLI
 ```python
 import clilib

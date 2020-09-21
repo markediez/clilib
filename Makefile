@@ -21,7 +21,7 @@ dev:
 
 .PHONY: publish
 publish:
-	python -m pip install --user --upgrade setuptools wheel
+	python -m pip install --upgrade setuptools wheel
 	python setup.py sdist bdist_wheel
-	python3 -m pip install --user --upgrade twine
-	python3 -m twine upload --repository testpypi dist/*
+	python -m pip install --upgrade twine
+	python -m twine upload --repository pypi dist/*

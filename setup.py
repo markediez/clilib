@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyclilib",
-    version="0.2.0",
+    version="0.3.0",
     author="Mark Diez",
     author_email="markediez@gmail.com",
     description="Build CLI Tools with ease",

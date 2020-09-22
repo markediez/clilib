@@ -54,7 +54,8 @@ def register_verb(resource, func):
             logger.debug(f"Adding arg to '{verb} {resource_name}': {rargs}, {rkwargs}")
             resource_parser.add_argument(*rargs, **rkwargs)
 
-
+# Primarily for testing
+# Future: Reading from config file or something
 def init(prog):
     global _root_parser
 
@@ -62,11 +63,9 @@ def init(prog):
 
 
 def run(prog):
-    global _root_parser
     global _args
     global _subparsers
 
-    _root_parser.prog = prog
     _args = _root_parser.parse_args()
 
     if hasattr(_args, '_func'):

@@ -1,6 +1,7 @@
 # pyclilib
 Python Library to create CLI tools using Subject-Verb-Object pattern
 ```
+# [my-namespace] not yet implemented
 my-cmd [my-namespace] my-action my-resource [pos_args] [--options]
 ```
 
@@ -16,6 +17,7 @@ class MyResource():
     def get(self):
         print "Hello world"
 
+clilib.init("mycli")
 clilib.run("mycli")
 ```
 3. Run your program
@@ -24,7 +26,7 @@ $ python example.py get my-resource
 Hello world
 ```
 
-# Quickstart 1: CLI with Namespaces
+# Quickstart 2: CLI with Namespaces (not implemented yet)
 1. `pip install clilib`
 2. Create the runner, `example.py`
 ```python
@@ -62,11 +64,6 @@ Hello World
 - [ ] Namespace
 - [ ] Conditional Args
 - [ ] CLI without resource ex. `git init`
-
-# Testing
-- flake8
-- pytest
-- pylogrus
 
 # TODO
 - How to make log level configurable?

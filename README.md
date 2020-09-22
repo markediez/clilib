@@ -13,9 +13,9 @@ import clilib
 
 @clilib.decorator.resource
 class MyResource():
-    @clilib.decorator.get
+    @clilib.decorator.verb
     def get(self):
-        print "Hello world"
+        print("Hello world")
 
 clilib.init("mycli")
 clilib.run("mycli")
@@ -26,7 +26,41 @@ $ python example.py get my-resource
 Hello world
 ```
 
-# Quickstart 2: CLI with Namespaces (not implemented yet)
+# Quickstart 2: CLI with args
+1. `pip install pyclilib`
+2. Create a hello world CLI with args.
+```python
+import clilib
+
+# Under the hood, clilib uses argparse.
+# the @arg decorator uses its "add_argument" method
+
+@clilib.decorator.resource
+@clilib.decorator.arg("--environment", "-e", type=str, default="dev")
+class MyResource():
+    @clilib.decorator.verb
+    @clilib.decorator.arg("name", type=str)
+    def get(self, args):
+        print(f"Get: {args.name}, {args.environment}")
+    
+    @clilib.decorator.verb
+    def list(self, args):
+        print(f"List: {args.environment}")
+        
+ 
+clilib.init("mycli")
+clilib.run("mycli")
+```
+3. Run your program
+```
+$ python example.py get my-resource Foo -e stage
+Get: Foo, stage
+
+$ python example.py list my-resource
+List: dev
+```
+
+# Quickstart 3: CLI with Namespaces (not implemented yet)
 1. `pip install clilib`
 2. Create the runner, `example.py`
 ```python
